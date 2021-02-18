@@ -1,0 +1,17 @@
+Dependencies: src\\basic.txt, src\\horror.txt;
+Objects: Scrooge, Glomgold, Cake, Ball;
+Predicates: EDIBLE 1, FULL 1;
+Start: CHARACTER(Scrooge), CHARACTER(Glomgold), HAS(Glomgold, Cake), VILLAIN(Glomgold), HERO(Scrooge), EDIBLE(Cake), FREE(Ball), TREASURE(Cake);
+Finish: HAS(Scrooge, Cake), DEAD(Glomgold);
+
+Actions:
+
+Eat(x, y)
+@precondition: HAS(x, y) AND HERO(x) AND EDIBLE(y)
+@add: FULL(x)
+@remove: HAS(x, y)
+@change: TIME + 1
+@output: $x eats $y
+@end
+
+;

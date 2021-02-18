@@ -1,0 +1,26 @@
+grammar Plan;
+prog: (objects)+ (predicates)+ (start)+ (finish)+ (actions)+ ;
+objects: 'Objects: ' object (SEPARATOR object)* ';' ;
+predicates: 'Predicates: ' predicate (SEPARATOR predicate)* ';' ;
+start: 'Start: ' predinst (SEPARATOR predinst)* ';' ;
+finish: 'Finish: ' predinst (SEPARATOR predinst)* ';' ;
+actions: actionname (precondition)+ (add)+ (remove)+ ;
+
+precondition: '-precondition: ' tree ;
+add:  predinst (SEPARATOR predinst)* ;
+remove: predinst (SEPARATOR predinst)* ;
+tree: (expr)+ ;
+expr: ('NOT' exprpi) | (exprpi binary exprpi) | predinst | ( '(' expr ')' ) ;
+exprpi: expr | predinst ;
+
+binary: 'AND' | 'OR' | 'XOR' ;
+object: STRING ;
+predicate: STRING INT ;
+predinst: STRING '(' STRING (SEPARATOR STRING)* ')' ;
+
+CHAR: [a-zA-Z] ;
+STRING: [a-zA-Z]+ ;
+INT: [0-9]+ ;
+SEPARATOR: [\r\n]+ | ',' ;
+
+//WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines

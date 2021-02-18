@@ -1,0 +1,22 @@
+Dependencies: xx.txt;
+Objects: Scrooge, Glomgold, Cake, Ball;
+Variables: TIME;
+Predicates: HAS 2, CHARACTER 1, HERO 1, VILLAIN 1;
+Start: CHARACTER(Scrooge), CHARACTER(Glomgold), HAS(Glomgold, Ball), TIME(20);
+Finish: HAS(Scrooge, Ball);
+
+Actions:
+
+GIVE(x, y, z)
+@precondition: HAS(x, z) AND CHARACTER(y) AND TIME( > 10)
+@add: HAS(y, z)
+@remove: HAS(x, z)
+@change: TIME( - 10), ACTION( + 1)
+@output: $x gives $z a $y
+@end
+
+NOD(x)
+@output: $x nods
+@end
+
+;

@@ -1,0 +1,15 @@
+Dependencies: src\\basic.txt;
+Objects: Knife, Axe;
+Predicates: WEAPON 1, DEAD 1;
+Start: FREE(Knife), FREE(Axe), WEAPON(Knife), WEAPON(Axe);
+
+Actions:
+
+Stab(x, y, z)
+@precondition: CHARACTER(x) AND HAS(x, y) AND CHARACTER(z) AND WEAPON(y)
+@add: DEAD(z)
+@remove: CHARACTER(z)
+@change: TIME + 3
+@output: $x stabs $z with a $y
+@end
+;

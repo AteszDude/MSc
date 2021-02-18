@@ -1,0 +1,19 @@
+Objects: Scrooge, Glomgold, Cake, Ball;
+Predicates: HAS 2, CHARACTER 1, HERO 1, VILLAIN 1;
+Start: CHARACTER(Scrooge), CHARACTER(Glomgold), HAS(Glomgold, Ball);
+Finish: HAS(Scrooge, Ball);
+
+Actions:
+
+GIVE(x, y, z)
+@precondition: HAS(x, z) AND CHARACTER(y)
+@add: HAS(y, z)
+@remove: HAS(x, z)
+@output: $x gives $z a $y
+@end
+
+NOD(x)
+@output: $x nods
+@end
+
+;

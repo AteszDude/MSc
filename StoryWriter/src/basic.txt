@@ -1,0 +1,31 @@
+Predicates: HAS 2, CHARACTER 1, HERO 1, VILLAIN 1, HERO 1, FREE 1, TREASURE 1;
+
+Actions:
+
+Steal(x, y, z)
+@precondition: CHARACTER(x) AND CHARACTER(y) AND HAS(y, z)
+@add: HAS(x, z)
+@remove: HAS(y, z)
+@change: TIME + 2
+@output: $x steals from $y the $z
+@end
+
+Drop(x, y)
+@precondition: HAS(x, y)
+@add: FREE(y)
+@remove: HAS(x, y)
+@change: TIME + 1
+@output: $x drops $y
+@end
+
+
+Take(x, y)
+@precondition: CHARACTER(x) AND FREE(y)
+@add: HAS(x, y)
+@remove: FREE(y)
+@change: TIME + 1
+@output: $x takes $y
+@end
+
+
+;
